@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">InventariApp</string>
+    <string name="menu_Open">Open</string>
+    <string name="close_menu">Close</string>
+
+    //dependencias de facebook
+    <string name="facebook_application_id" translatable="false">312350297398461</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb312350297398461</string>
+
+</resources>

@@ -1,0 +1,5 @@
+SOLUCION::::
+
+Pegamos esto en la consola de android para tomar el keytool----- C:\Program Files\Java\jdk1.8.0_311\bin
+
+keytool -exportcert -alias androiddebugkey -keystore "C:\Users\jhernandez\.android\debug.keystore" | E:\ProyectosAndroid\InventariApp\recursos\bin\openssl.exe sha1 -binary | E:\ProyectosAndroid\InventariApp\recursos\bin\openssl.exe base64

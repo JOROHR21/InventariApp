@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "948184625094",
+    "project_id": "inventariapp-2021",
+    "storage_bucket": "inventariapp-2021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948184625094:android:a0998d9cbc165624918cc7",
+        "android_client_info": {
+          "package_name": "com.roberth.inventariapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "948184625094-2qmhl610sp5g6pball8liv1lf3n2a2ht.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.roberth.inventariapp",
+            "certificate_hash": "04d910069c0c556a4e2d3e937215c5840853754d"
+          }
+        },
+        {
+          "client_id": "948184625094-j1vlertaco6r30iqa4hhhva80fjfto1d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgi5i0BFp_CBaEc8r2TfxtKfV9pnWHqws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "948184625094-j1vlertaco6r30iqa4hhhva80fjfto1d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

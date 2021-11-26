@@ -1,0 +1,27 @@
+Microsoft Windows [Versión 10.0.19042.1288]
+(c) Microsoft Corporation. Todos los derechos reservados.
+
+C:\Windows\system32>CD C:\Program Files\Android\Android Studio\jre\bin
+
+C:\Program Files\Android\Android Studio\jre\bin>keytool -list -v -alias androiddebugkey -keystore %USERPROFILE%\.android/debug.keystore
+Introduzca la contraseña del almacén de claves:
+Nombre de Alias: androiddebugkey
+Fecha de Creación: 14 sep. 2021
+Tipo de Entrada: PrivateKeyEntry
+Longitud de la Cadena de Certificado: 1
+Certificado[1]:
+Propietario: C=US, O=Android, CN=Android Debug
+Emisor: C=US, O=Android, CN=Android Debug
+Número de serie: 1
+Válido desde: Tue Sep 14 11:46:58 CST 2021 hasta: Thu Sep 07 11:46:58 CST 2051
+Huellas digitales del certificado:
+         SHA1: 04:D9:10:06:9C:0C:55:6A:4E:2D:3E:93:72:15:C5:84:08:53:75:4D
+         SHA256: 39:30:0E:A7:51:7F:C5:62:12:56:8C:F4:0F:EC:5A:0E:0B:23:A2:C9:64:F1:52:52:86:BD:04:0C:D0:9E:26:BE
+Nombre del algoritmo de firma: SHA1withRSA (débil)
+Algoritmo de clave pública de asunto: Clave RSA de 2048 bits
+Versión: 1
+
+Warning:
+El certificado uses the SHA1withRSA signature algorithm which is considered a security risk. This algorithm will be disabled in a future update.
+
+C:\Program Files\Android\Android Studio\jre\bin>
