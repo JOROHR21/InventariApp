@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -31,18 +32,26 @@ public class Login<Protected> extends AppCompatActivity {
             // AGREGA REGISTRO POR CEL new AuthUI.IdpConfig.PhoneBuilder().build(),
             // AGREGA REGISTRO POR EMAIL new AuthUI.IdpConfig.EmailBuilder().build()
     );
+
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+    Button CerrarSesion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
 
-            mfirebaseAutH = FirebaseAuth.getInstance();
+        mfirebaseAutH = FirebaseAuth.getInstance();
             mAuthListener =new  FirebaseAuth.AuthStateListener() {
                 @Override
                 public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                     //consultando si el usuario esta en firebase
                     FirebaseUser user = firebaseAuth.getCurrentUser();
                     if (user !=null){
+                        Intent irmenu = new Intent(Login.this, MenuLateral.class);
+                        startActivity(irmenu);
+                        //finish();
                         Toast.makeText(Login.this,"Sesion Exitosa", Toast.LENGTH_SHORT).show();
 
                     }else{
@@ -58,6 +67,7 @@ public class Login<Protected> extends AppCompatActivity {
                 }
             };
 
+
     }//Fin del oncreate!
 
 
@@ -66,8 +76,6 @@ public class Login<Protected> extends AppCompatActivity {
     //validamos si entro e inicio sesion que quede login al entrar
     @Override
     protected void onResume() {
-        Intent irmenu = new Intent(Login.this, MenuLateral.class);
-        startActivity(irmenu);
         super.onResume();
         mfirebaseAutH.addAuthStateListener(mAuthListener);
     }
@@ -77,6 +85,8 @@ public class Login<Protected> extends AppCompatActivity {
         super.onPause();
         mfirebaseAutH.removeAuthStateListener(mAuthListener);
     }
+
+
 
 
    // public void cerrarsesion(View view) {

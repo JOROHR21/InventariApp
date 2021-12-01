@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="areascasa.menucocina">
+    tools:context="areascasa.menuhabi">
+
 
     <LinearLayout
-        android:id="@+id/lyeditar"
+        android:id="@+id/lyeditarh"
         android:orientation="vertical"
         android:layout_margin="10dp"
         android:background="#2B84F5"
@@ -17,7 +18,7 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/inputnombrep"
+            android:id="@+id/inputnombreph"
             android:hint="Nombre Producto"
             android:paddingTop="10dp"
             android:textColor="@color/white"
@@ -25,7 +26,7 @@
             android:layout_height="wrap_content"/>
 
         <EditText
-            android:id="@+id/inputcantidadp"
+            android:id="@+id/inputcantidadph"
             android:hint="Cantidad"
             android:paddingTop="10dp"
             android:inputType="number"
@@ -34,17 +35,17 @@
             android:layout_height="wrap_content"/>
 
         <Button
-            android:id="@+id/btncancelarp"
+            android:id="@+id/btncancelarph"
             android:text="Cancelar"
             android:textAllCaps="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
-<ListView
-    android:id="@+id/lvcocina"
-    android:layout_margin="15dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    <ListView
+        android:id="@+id/lvhabi"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

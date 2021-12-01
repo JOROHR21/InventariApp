@@ -13,7 +13,8 @@
         <item android:title="Autenticacion">
     <menu>
         <group >
-            <item android:id="@+id/nav_csesion" android:title="Cerrar Sesion" android:icon="@drawable/ic_cerrarsesion"/>
+
+            <item android:id="@+id/Salir" android:title="Cerrar Sesion" android:icon="@drawable/ic_cerrarsesion"/>
 
         </group>
     </menu>

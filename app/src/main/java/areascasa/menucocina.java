@@ -1,4 +1,4 @@
-package cocina;
+package areascasa;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -24,11 +25,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.roberth.inventariapp.R;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import Adaptadores.ListViewCocinaAdapter;
 import Models.Cocina;
 
-public class menucocina extends AppCompatActivity {
+public class menucocina extends AppCompatActivity  {
+
 
     private ArrayList<Cocina> listCocinas= new ArrayList<Cocina>();
     ArrayAdapter<Cocina> arrayAdapterCocina;
@@ -44,11 +47,11 @@ public class menucocina extends AppCompatActivity {
     DatabaseReference databaseReference;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menucocina);
+
         inputnombrep = findViewById(R.id.inputnombrep);
         inputcantidadp = findViewById(R.id.inputcantidadp);
         btncancelarp = findViewById(R.id.btncancelarp);
@@ -79,6 +82,7 @@ public class menucocina extends AppCompatActivity {
         listarCocina();
     }
 
+
     private void inicializarFirebase(){
         FirebaseApp.initializeApp(this);
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -95,12 +99,9 @@ public class menucocina extends AppCompatActivity {
                     listCocinas.add(c);
                 }
                 //iniciar nuestro adaptador
-                arrayAdapterCocina = new ArrayAdapter<Cocina>(
-                        menucocina.this,
-                        android.R.layout.simple_list_item_1,
-                        listCocinas
-                );
-                lvcocina.setAdapter(arrayAdapterCocina);
+                listViewCocinaAdapter = new ListViewCocinaAdapter(menucocina.this,listCocinas);
+                //arrayAdapterCocina = new ArrayAdapter<Cocina>(menucocina.this, android.R.layout.simple_list_item_1, listCocinas);
+                lvcocina.setAdapter(listViewCocinaAdapter);
             }
 
             @Override
@@ -119,17 +120,47 @@ public class menucocina extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        String productos = inputnombrep.getText().toString();
+        String producto = inputnombrep.getText().toString();
         String cantidad = inputcantidadp.getText().toString();
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.cocina_agregar:
                 insertar();
+                break;
+            case R.id.cocina_guardar:
+                if (cocinaSeleccionada != null){
+                if (validarInputs() == false);
+                    Cocina c = new Cocina();
+                    c.setIdcocina(cocinaSeleccionada.getIdcocina());
+                    c.setProducto(producto);
+                    c.setCantidad(cantidad);
+                    databaseReference.child("Cocina").child(c.getIdcocina()).setValue(c);
+                    Toast.makeText(this , "Actualizado Correctamente" , Toast.LENGTH_SHORT);
+                    lyeditar.setVisibility(View.GONE);
+                    cocinaSeleccionada = null;
+                } else
+                    {
+                    Toast.makeText(this, "Seleccione un Producto" , Toast.LENGTH_SHORT).show();
+
+                    }
+                break;
+            case R.id.cocina_eliminar:
+                if (cocinaSeleccionada != null){
+                    Cocina c2 = new Cocina();
+                    c2.setIdcocina(cocinaSeleccionada.getIdcocina());
+                    databaseReference.child("Cocina").child(c2.getIdcocina()).removeValue();
+                    lyeditar.setVisibility(View.GONE);
+                    cocinaSeleccionada = null;
+                    Toast.makeText(this , "Eliminado Correctamente" , Toast.LENGTH_SHORT);
+                }else {
+                    Toast.makeText(this, "Seleccione un Producto" , Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
     public void insertar(){
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(
                 menucocina.this
@@ -143,6 +174,54 @@ public class menucocina extends AppCompatActivity {
         final  AlertDialog dialog = mBuilder.create();
         dialog.show();
 
+        btnInsertar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String producto = medtinsertarp.getText().toString();
+                String cantidad = medtinsertarc.getText().toString();
+
+                if (producto.isEmpty() || producto.length()<1){
+                    showError(medtinsertarp,  "Nombre Invalido");
+                }else if (cantidad.isEmpty() || cantidad.length() <1){
+                    showError(medtinsertarc, "Cantidad Requerida");
+                }else{
+                    Cocina c = new Cocina();
+                    c.setIdcocina(UUID.randomUUID().toString());
+                    c.setProducto(producto);
+                    c.setCantidad(cantidad);
+                   // c.setFecharegistro(getFechaNormal());
+                    databaseReference.child("Cocina").child(c.getIdcocina()).setValue(c);
+                    Toast.makeText( menucocina.this, "Producto Agregado" , Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                }
+
+            }
+        });
 
     }
+    public void showError(EditText input, String s){
+        input.requestFocus();
+        input.setError(s);
+    }
+   // public String getFechaNormal(){
+       // SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        //sdf.setTimeZone(TimeZone.getTimeZone("GMT-6"));
+        //String fecha = getFechaNormal();
+        //return fecha;
+
+        public  boolean validarInputs(){
+            String producto = inputnombrep.getText().toString();
+            String cantidad = inputcantidadp.getText().toString();
+            if (producto.isEmpty() || producto.length()<1){
+                showError(inputnombrep,  "Nombre Invalido");
+                return true;
+            }else if (cantidad.isEmpty() || cantidad.length() <1){
+                showError(inputcantidadp, "Cantidad Requerida");
+                return true;
+            }else{
+                return false;
+            }
+
+        }
 }
+//}

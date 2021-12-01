@@ -12,13 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InventariApp">
         <activity
-            android:name="cocina.menucocina"
+            android:name="areascasa.menuhabi"
+            android:exported="false" />
+        <activity
+            android:name="areascasa.menubano"
+            android:exported="false" />
+        <activity
+            android:name="areascasa.menusala"
+            android:exported="false" />
+        <activity
+            android:name="areascasa.menucocina"
             android:exported="false" />
         <activity
             android:name=".MenuLateral"
-            android:exported="false" />
-        <activity
-            android:name=".Menu"
             android:exported="false" />
         <activity
             android:name=".Login"

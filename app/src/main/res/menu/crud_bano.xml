@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-   >
- >
-
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/cocina_agregar"
+        android:id="@+id/bano_agregar"
         android:icon="@drawable/agregar"
         android:title="Agregar"
         app:showAsAction="always"/>
 
     <item
-        android:id="@+id/cocina_guardar"
+        android:id="@+id/bano_guardar"
         android:icon="@drawable/editar"
         android:title="Guardar"
         app:showAsAction="always"/>
 
     <item
-        android:id="@+id/cocina_eliminar"
+        android:id="@+id/bano_eliminar"
         android:icon="@drawable/eliminar"
         android:title="Eliminar"
         app:showAsAction="always"/>

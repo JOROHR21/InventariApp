@@ -22,6 +22,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/imagesilder"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:sliderAnimationDuration="600"
+            app:sliderAutoCycleDirection="back_and_forth"
+            app:sliderAutoCycleEnabled="true"
+            app:sliderIndicatorAnimationDuration="600"
+            app:sliderIndicatorGravity="center_horizontal|bottom"
+            app:sliderIndicatorMargin="15dp"
+            app:sliderIndicatorOrientation="horizontal"
+            app:sliderIndicatorPadding="3dp"
+            app:sliderIndicatorRadius="2dp"
+            app:sliderIndicatorUnselectedColor="#fff"
+            app:sliderIndicatorSelectedColor="#5A5A5A"
+            app:sliderScrollTimeInSec="2"
+            app:sliderStartAutoCycle="true"
+            tools:ignore="MissingConstraints" />
+
+
+
+
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -29,13 +51,14 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="250dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="40dp"
             android:rowCount="2"
             android:columnCount="2"
             >
 
             //cardviewcocina
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardcocina"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="0"
@@ -48,6 +71,7 @@
                 app:cardElevation="8dp">
 
                 <LinearLayout
+                    android:id="@+id/btncocina"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|center_horizontal"
@@ -69,8 +93,9 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            //cardviewhabitaciones
+            //cardviewsala
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardsala"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="1"
@@ -105,6 +130,7 @@
 
             //cardviewbaño
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardbaño"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="0"
@@ -137,8 +163,9 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            //cardviewcomedor
+            //cardviewhabi
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardhabi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="1"
@@ -157,13 +184,13 @@
                     android:gravity="center"
                     android:layout_gravity="center_vertical|center_horizontal">
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/cocina"/>
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/habi"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="COMEDOR"
+                        android:text="HABITACION"
                         android:textStyle="bold"
                         android:textAlignment="center"/>
                 </LinearLayout>
@@ -171,6 +198,17 @@
 
         </GridLayout>
 
+        <Button
+            android:id="@+id/cerrar_sesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:onClick="clickCerrarSesion"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
